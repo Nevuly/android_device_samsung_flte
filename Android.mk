@@ -1,6 +1,6 @@
 #
-# Copyright (C) 2014 The CyanogenMod Project
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2014-2016 The CyanogenMod Project
+# Copyright (C) 2017-2023 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter h3gduoschn hlte hltechn hltekor hltetmo hltespr hlteusc hltevzw,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),flte)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 endif

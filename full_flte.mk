@@ -1,5 +1,6 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2014-2016 The CyanogenMod Project
+# Copyright (C) 2017-2023 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +15,15 @@
 # limitations under the License.
 #
 
-include $(call first-makefiles-under,$(call my-dir))
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit from hltekor device
+$(call inherit-product, device/samsung/flte/device.mk)
+
+# Set those variables here to overwrite the inherited values.
+PRODUCT_NAME := full_flte
+PRODUCT_DEVICE := flte
+PRODUCT_MODEL := flte
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung

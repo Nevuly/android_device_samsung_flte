@@ -40,25 +40,27 @@ ro.gps.agps_provider=1
 ro.qc.sdk.izat.premium_enabled=0
 ro.qc.sdk.izat.service_mask=0x0
 
-# perf api
-ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
-
 # NFC
 ro.nfc.port=I2C
+
+# Perf
+ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
 
 # Radio
 persist.data.netmgrd.qos.enable=true
 persist.data.qmi.adb_logmask=0
 persist.radio.add_power_save=1
 rild.libpath=/system/vendor/lib/libsec-ril.so
-ro.ril.telephony.qan_resp_strings=6
+ro.telephony.default_network=9
 ro.telephony.mms_data_profile=5
+ro.ril.telephony.qan_resp_strings=6
+telephony.lteOnGsmDevice=1
 
 # Sensors
 debug.sensors=1
 
 # Vendor security patch level
-ro.lineage.build.vendor_security_patch=2016-06-01
+ro.lineage.build.vendor_security_patch=2014-08-01
 
 # Wifi
 wifi.interface=wlan0

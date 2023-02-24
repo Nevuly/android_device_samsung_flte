@@ -15,6 +15,19 @@
 # limitations under the License.
 #
 
-# Board specific SELinux policy variable definitions
-BOARD_SEPOLICY_DIRS += \
-    device/samsung/flte/sepolicy/common
+# Inherit some common LineageOS stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+
+$(call inherit-product, device/samsung/hltekor/full_hlte.mk)
+
+## Device identifier. This must come after all inclusions
+PRODUCT_NAME := lineage_flte
+PRODUCT_DEVICE := flte
+PRODUCT_MODEL := SM-G910S
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=flte \
+	TARGET_DEVICE=flte \
+	PRIVATE_BUILD_DESC="flteskt-user 4.4.2 KOT49H G910SKSUENG5 release-keys"
+
+BUILD_FINGERPRINT := samsung/flteskt/flteskt:4.4.2/KOT49H/G910SKSUENG5:user/release-keys

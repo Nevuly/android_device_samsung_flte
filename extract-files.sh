@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Copyright (C) 2014 The CyanogenMod Project
-# Copyright (C) 2017-2018 The LineageOS Project
+# Copyright (C) 2014-2016 The CyanogenMod Project
+# Copyright (C) 2017-2023 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,9 @@
 #
 
 set -e
+
+DEVICE=flte
+VENDOR=samsung
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -47,28 +50,18 @@ else
     fi
 fi
 
-# Initialize the helper for common device
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" true
+# Initialize the helper
+setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
-extract "$MY_DIR"/common-proprietary-files.txt "$SRC"
-extract "$MY_DIR"/common-proprietary-files-twrp.txt "$SRC"
+extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
-COMMON_BLOB_ROOT="$CM_ROOT"/vendor/"$VENDOR"/"$DEVICE_COMMON"/proprietary
+DEVICE_BLOB_ROOT="$CM_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 
-MMCAMERA2_SENSOR_MODULES="$COMMON_BLOB_ROOT"/vendor/lib/libmmcamera2_sensor_modules.so
+MMCAMERA2_SENSOR_MODULES="$DEVICE_BLOB_ROOT"/vendor/lib/libmmcamera2_sensor_modules.so
 sed -i 's|system/etc|vendor/etc|g;
         s|/system/lib|/vendor/lib|g' "$MMCAMERA2_SENSOR_MODULES"
 
-THERMAL_ENGINE="$COMMON_BLOB_ROOT"/vendor/bin/thermal-engine
+THERMAL_ENGINE="$DEVICE_BLOB_ROOT"/vendor/bin/thermal-engine
 sed -i 's|/system/etc|/vendor/etc|g' "$THERMAL_ENGINE"
-
-# Reinitialize the helper for device
-setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
-
-for BLOB_LIST in "$MY_DIR"/../$DEVICE/device-proprietary-files*.txt; do
-    extract $BLOB_LIST "$SRC"
-done
-
-./../msm8974-common/extract-files.sh $@
 
 "$MY_DIR"/setup-makefiles.sh
