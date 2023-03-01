@@ -1,19 +1,15 @@
 #!/bin/bash
 #
-# Copyright (C) 2014 The CyanogenMod Project
-# Copyright (C) 2017-2021 The LineageOS Project
+# Copyright (C) 2014-2016 The CyanogenMod Project
+# Copyright (C) 2017-2023 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 set -e
 
-if [ -z "${DEVICE_COMMON}" ]; then
-    echo ""
-    echo "error: This is a script in a common tree. Please execute" $(basename $0) "from a device tree."
-    echo ""
-    exit 1
-fi
+DEVICE=flte
+VENDOR=samsung
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -29,13 +25,13 @@ fi
 source "${HELPER}"
 
 # Initialize the helper for common
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" true
 
 # Warning headers and guards
-write_headers "hlte hltechn hltekor hltetmo"
+write_headers
 
 # The standard common blobs
-write_makefiles "${MY_DIR}/common-proprietary-files.txt" true
+write_makefiles "${MY_DIR}/proprietary-files.txt" true
 
 # Finish
 write_footers

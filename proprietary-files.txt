@@ -1,5 +1,3 @@
-# Samsung Package Version: N9005XXSGBRI2_N9005AUTGBRI1_AUT, unless pinned
-
 # Activity recognition
 vendor/lib/libsensor1.so
 
@@ -302,12 +300,13 @@ bin/qcks:vendor/bin/qcks
 bin/qmuxd:vendor/bin/qmuxd
 bin/rfs_access:vendor/bin/rfs_access
 bin/rmt_storage:vendor/bin/rmt_storage
+lib/libsec-ril.so:vendor/lib/libsec-ril.so
 vendor/lib/libril-qcril-hook-oem.so
 
 # Sensors
 lib/hw/sensorhubs.msm8974.so:vendor/lib/hw/sensorhubs.msm8974.so
 lib/hw/sensors.msm8974.so:vendor/lib/hw/sensors.vendor.msm8974.so
-lib/libsensirion_h_2.so:vendor/lib/libsensirion_h_2.so
+lib/libsensirion_f_5.so:vendor/lib/libsensirion_f_5.so
 
 # Wi-Fi
 etc/wifi/bcmdhd_apsta.bin:vendor/etc/wifi/bcmdhd_apsta.bin

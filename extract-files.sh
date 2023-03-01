@@ -1,19 +1,15 @@
 #!/bin/bash
 #
-# Copyright (C) 2014 The CyanogenMod Project
-# Copyright (C) 2017-2021 The LineageOS Project
+# Copyright (C) 2014-2016 The CyanogenMod Project
+# Copyright (C) 2017-2023 The LineageOS Project
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 set -e
 
-if [ -z "${DEVICE_COMMON}" ]; then
-    echo ""
-    echo "error: This is a script in a common tree. Please execute" $(basename $0) "from a device tree."
-    echo ""
-    exit 1
-fi
+DEVICE=flte
+VENDOR=samsung
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -40,9 +36,9 @@ function blob_fixup() {
     esac
 }
 
-setup_vendor "${DEVICE_COMMON}" "${VENDOR}" "${ANDROID_ROOT}" true
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" true
 
-extract "${MY_DIR}/common-proprietary-files.txt" "${SRC}"
+extract "${MY_DIR}/proprietary-files.txt" "${SRC}"
 
 export BOARD_COMMON=msm8974-common
 

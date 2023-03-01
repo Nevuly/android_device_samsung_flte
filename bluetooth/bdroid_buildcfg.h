@@ -17,7 +17,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Note 3"
+#define BTM_DEF_LOCAL_NAME   "Samsung Galaxy Round"
 
 #define BTA_DISABLE_DELAY 100 /* in milliseconds */
 #define BTM_WBS_INCLUDED TRUE
